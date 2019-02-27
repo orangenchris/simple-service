@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:10.4-alpine
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=db
+
+pipeline:
+  build-docker-image:
+    image: plugins/docker
+    insecure: true
+    registry: registry.tola.io
+    repo: registry.tola.io/humanitec/app_name
+    file: Dockerfile
+    auto_tag: true
+    secrets: [DOCKER_USERNAME, DOCKER_PASSWORD]
+    when:
+      event: [push, tag]
+      status: [success]

@@ -1,0 +1,33 @@
+version: '3.5'
+
+services:
+  app_name:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: app_name
+    image: app_name
+    environment:
+      DATABASE_NAME: "app_name"
+      DATABASE_USER: "root"
+      DATABASE_PASSWORD: "root"
+    volumes:
+    - "./app:/src/app"
+    ports:
+      - "8080:8080"
+  
+  postgres_db:
+    container_name: postgres_db
+    healthcheck:
+      test: "pg_isready -h localhost -p 5432 -q -U postgres"
+      interval: 3s
+      timeout: 5s
+      retries: 5
+    image: postgres:10.4-alpine
+    environment:
+      POSTGRES_DB: app_name
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    volumes:
+      - /var/lib/postgresql/data/
+    restart: always
