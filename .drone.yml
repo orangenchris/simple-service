@@ -11,7 +11,7 @@ pipeline:
     image: plugins/docker
     insecure: true
     registry: registry.tola.io
-    repo: registry.tola.io/humanitec/app_name
+    repo: registry.tola.io/humanitec-walhall/app_name
     file: Dockerfile
     auto_tag: true
     secrets: [DOCKER_USERNAME, DOCKER_PASSWORD]
