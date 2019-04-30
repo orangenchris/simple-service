@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:10.15.3-alpine
 # Create app directory
 WORKDIR mkdir src
 
@@ -10,6 +10,6 @@ ADD app/package.json /src/package.json
 ADD app/swagger.json /src/swagger.json
 RUN npm install
 
-EXPOSE 8080
+EXPOSE 3000
 
 CMD node app/bin/www
