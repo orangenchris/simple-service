@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var options = {
   explorer : true
 };
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

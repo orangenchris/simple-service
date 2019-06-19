@@ -10,6 +10,7 @@ ADD app/package.json /src/package.json
 ADD app/swagger.json /src/swagger.json
 RUN npm install
 
-EXPOSE 3000
+COPY . .
+EXPOSE 8080
 
 CMD node app/bin/www
