@@ -9,6 +9,8 @@ var usersRouter = require('./routes/users');
 swaggerUi = require('swagger-ui-express'),
 swaggerDocument = require('./swagger.json');
 
+const todayRouter = require('./routes/today');
+
 var app = express();
 
 // view engine setup
@@ -25,10 +27,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 var options = {
   explorer : true
 };
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
+app.use('/docs', function (req, res) {
+  res.json(swaggerDocument);
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/today', todayRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

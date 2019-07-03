@@ -1,1 +1,26 @@
-{}
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Day of the Week Service",
+    "version": "v2"
+  },
+  "paths": {
+    "/today": {
+      "get": {
+        "summary": "The day of the week today",
+        "description": "Returns the day of the week today in English",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "examples": {
+              "application/json": "\"Wednesday\""
+            }
+          }
+        }
+      }
+    }
+  }
+}
