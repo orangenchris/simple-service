@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var options = {
   explorer : true
 };
-app.use('/docs', function (req, res) {
+app.use('/docs/swagger.json', function (req, res) {
   res.json(swaggerDocument);
 });
 
